@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text="${cancion.nombre}+' | RaGe Studio'"></title>
+        <link rel="stylesheet" href="../style.css">
+        <link rel="shortcut icon" th:href="@{/logo.png}" type="image/x-icon">
+	    <link rel="stylesheet" th:href="@{style.css}">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+	    <nav id="cabecera">
+	        <a href="/">
+	            <img src="../logo.png" alt="Logo de RaGe Studio" id="logo">
+	        </a>
+	        <div id="apartados">
+	            <div class="apartado">
+	                <a href="/">
+	                    <p>Inicio</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/artistas">
+	                    <p>Artistas</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/contacto.html" class="disabled">
+	                    <p>Contacto</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/nosotros.html" class="disabled">
+	                    <p>Nosotros</p>
+	                </a>
+	            </div>
+	            <form class="form-inline" th:action="@{/buscar}" method="get">
+				    <input class="form-control mr-sm-2" type="search" placeholder="Buscar aquí..." aria-label="Search" id="input" name="input">
+				    <button class="btn btn-rage my-2 my-sm-0" type="submit">🔍︎</button>
+				</form>
+	        </div>
+	    </nav>
+        <div id="contenedor">
+            <div class="img_cont">
+                <img th:src="'..'+${cancion.portada.url}" th:alt="${cancion.nombre}+' - '+${cancion.artista.nombre}" class="song_header">
+            </div>
+            <h2 class="song_name" th:text="${cancion.nombre}"></h2>
+            <a th:href="'/artista/'+${#strings.toLowerCase(cancion.artista.nombre)}">
+				<h3 class="song_artist" th:text="${cancion.artista.nombre}"></h3>
+			</a>
+            
+            <iframe class="iframe" width="560" height="315" th:src="${ytEmbed.url}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen style="border-radius: 10px; box-shadow: black 0px 0px 10px;"></iframe>
+            <iframe style="border-radius:12px; margin-top: 20px; box-shadow: black 0px 0px 10px;" th:src="${spotifyEmbed.url}" width="70%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            
+            <h2 style="padding-top: 20px; text-transform: uppercase;">Links</h2>
+            <div class="link" th:each="enlace: ${cancion.enlaces}" th:if="${enlace.tienda.urlIcono} != null">
+                <a th:href="${enlace.url}" target="_blank" class="stream_link">
+                    <img th:src="'..'+${enlace.tienda.urlIcono}" th:alt="${enlace.tienda.nombre}" class="link_icon">
+                    <div class="link_name" th:text="${enlace.tienda.nombre}"></div>
+                </a>
+            </div>
+        </div>
+        <footer>
+            <img src="../logo.png" alt="Logo de RaGe Studio">
+            <h3>RaGe Studio</h3>
+        </footer>
+    </body>
+</html>

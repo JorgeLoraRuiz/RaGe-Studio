@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" th:href="@{/logo.png}" type="image/x-icon">
+	    <title>RaGe Studio</title>
+	    <link rel="stylesheet" th:href="@{style.css}">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	    <style>
+			.error{
+				color: red;
+				font-size: 115%;
+			}
+			
+			form{
+				padding: 20px 0;
+				display: flex;
+			    flex-direction: column;
+			    align-items: center;
+			    text-align: center;
+			}
+			label{
+				font-size: 125%;
+			}
+		</style>
+	</head>
+	<body>
+	    <nav id="cabecera">
+	        <a href="/">
+	            <img src="logo.png" alt="Logo de RaGe Studio" id="logo">
+	        </a>
+	        <div id="apartados">
+	            <div class="apartado">
+	                <a href="/">
+	                    <p>Inicio</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/artistas">
+	                    <p>Artistas</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/contacto.html" class="disabled">
+	                    <p>Contacto</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/nosotros.html" class="disabled">
+	                    <p>Nosotros</p>
+	                </a>
+	            </div>
+	            <form class="form-inline" th:action="@{/buscar}" method="get">
+				    <input class="form-control mr-sm-2" type="search" placeholder="Buscar aquí..." aria-label="Search" id="nombre" name="nombre">
+				    <button class="btn btn-rage my-2 my-sm-0" type="submit">🔍︎</button>
+				</form>
+	        </div>
+	    </nav>
+	    <div id="contenedor">
+			<h1>Inicio de sesión de administradores</h1>
+	        <form th:action="@{/adminLogin}" th:object="${admin}" method="post">
+				<div class="form-group">
+				    <label for="nombre">Nombre de usuario</label>
+					<input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}">
+					<h4 class="error" th:each="err : ${#fields.errors('nombre')}" th:text="${err}"></h4>
+				</div>
+				<div class="form-group">
+				    <label for="contra">Contraseña</label>
+					<input type="password" class="form-control" id="contra" name="contra" th:field="*{contra}">
+					<h4 class="error" th:each="err : ${#fields.errors('contra')}" th:text="${err}"></h4>
+				</div>
+				<button type="submit" class="btn btn-rage">Entrar</button>
+			</form>
+			<h4 class="error" th:text="${notFound}" th:if="${notFound} != null"></h4>
+			<h4 class="error" th:text="${incorrecto}" th:if="${incorrecto} != null"></h4>
+	        <footer>
+	            <img src="../logo.png" alt="Logo de RaGe Studio">
+	            <h3 style="margin: 0;">RaGe Studio</h3>
+	        </footer>
+	</body>
+</html>

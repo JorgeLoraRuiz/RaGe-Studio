@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" th:href="@{/logo.png}" type="image/x-icon">
+	    <title>Artistas | RaGe Studio</title>
+	    <link rel="stylesheet" th:href="@{style.css}">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	    <nav id="cabecera">
+	        <a href="/">
+	            <img src="logo.png" alt="Logo de RaGe Studio" id="logo">
+	        </a>
+	        <div id="apartados">
+	            <div class="apartado">
+	                <a href="/">
+	                    <p>Inicio</p>
+	                </a>
+	            </div>
+	            <div class="apartado active">
+	                <a href="/artistas">
+	                    <p>Artistas</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/contacto.html" class="disabled">
+	                    <p>Contacto</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/nosotros.html" class="disabled">
+	                    <p>Nosotros</p>
+	                </a>
+	            </div>
+	            <form class="form-inline" th:action="@{/buscar}" method="get">
+				    <input class="form-control mr-sm-2" type="search" placeholder="Buscar aquí..." aria-label="Search" id="input" name="input">
+				    <button class="btn btn-rage my-2 my-sm-0" type="submit">🔍︎</button>
+				</form>
+	        </div>
+	    </nav>
+	    <div id="contenedor" style="padding-top: 12px;">
+			<h1 style="padding-bottom: 12px;">Artistas de RaGe Studio</h1>
+	        <div class="dosColumnas">
+				<div class="columna" th:each="artista: ${artistas}">
+					<a th:href="'/artista/'+${#strings.toLowerCase(artista.nombre)}">
+						<img th:src="'..'+${artista.imgArtista.urlImagen}" class="col_img">
+						<h3 th:text="${artista.nombre}" class="col_nombre"></h3>						
+					</a>
+				</div>
+			</div>
+	        <footer>
+	            <img src="../logo.png" alt="Logo de RaGe Studio">
+	            <h3 style="margin: 0;">RaGe Studio</h3>
+	        </footer>
+	</body>
+</html>

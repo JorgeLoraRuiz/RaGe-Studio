@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+@font-face {
+    font-family: Alternate_Gothic;
+    src: url(Alternate_Gothic_No3_D_Regular.otf);
+  }
+  
+
+* {
+    margin: 0;
+    font-family: 'Alternate_Gothic', sans-serif;
+    color: white;
+}
+
+a {
+	color: white !important;
+    text-decoration: none !important;
+    text-align: center;
+}
+
+a.disabled, a.disabled p {
+  color: gray !important;
+  pointer-events: none;
+}
+
+a *:hover{
+	color: #c06d00 !important;
+}
+
+body{
+    background-color: black !important;
+}
+
+#cabecera{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #1d1d1d;
+    flex-direction: row;
+    border-bottom: solid 1px #c06d00;
+    justify-content: center;
+}
+
+#logo{
+    width: 100px;
+    border-radius: 20px;
+}
+
+#apartados{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    border-top: solid 1px #1b1b1b;
+}
+
+#apartados form{
+	position: absolute;
+    right: 5%;
+    flex-direction: row;
+    padding: 0;
+}
+
+#apartados form input, #apartados form button{
+	padding: 6px 12px;
+}
+
+.apartado{
+    width: 15%;
+    padding: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.apartado a p{
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 120%;
+}
+
+.active a p{
+    width: fit-content;
+    margin: 0 auto;
+    color: #c06d00;
+}
+
+.apartado a{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#contenedor{
+    width: 1260px;
+    background-color: #161616;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+}
+
+#ultNov{
+    padding-bottom: 20px;
+}
+
+.portadaCancion{
+    width: 100%;
+    border-radius: 7px;
+}
+
+.carousel_song_name{
+	width: 1270px;
+    height: 446px;
+    line-height: 20;
+    text-transform: uppercase;
+    background-size: 22%;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+}
+
+.carousel_song_name:hover{
+	color: white !important;
+}
+
+.datos{
+    width: 20%;
+    padding: 0 10px;
+}
+
+.datos h3, .datos h4{
+    text-align: center;
+}
+
+.enlaces{
+    width: 20%;
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.enlaceCancion{
+    width: 30%;
+    display: inline-block;
+}
+
+.enlaceCancionImg{
+    width: 80%;
+}
+
+.img_cont{
+    width: 100%;
+    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.song_header{
+    width: 25%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    pointer-events: none;
+    box-shadow: black 0px 0px 10px;
+    margin-bottom: 20px;
+}
+
+.song_name, .artist_name{
+	text-transform: uppercase;
+}
+
+.song_artist{
+	padding-bottom: 20px;
+	text-transform: uppercase;
+	color: #a1a1a1 !important;
+}
+
+.song_artist:hover{
+	padding-bottom: 20px;
+	text-transform: uppercase;
+	color: #6d6d6d !important;
+}
+
+.iframe{
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+}
+
+.link {
+    width: 50%;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.link_icon {
+    width: 27%;
+    padding: 3%;
+    display: inline;
+}
+
+.link_name {
+    width: 70%;
+    padding: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.link_name:hover {
+    color: white !important;
+}
+
+.stream_link {
+    width: 40%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    transition: background-color 150ms ease-in-out;
+    border-radius: 7px;
+}
+
+.stream_link:hover{
+	background-color: rgb(99, 99, 99);
+    transition: background-color 150ms ease-in-out;
+}
+
+footer{
+    width: 100%;
+    background-color: #1d1d1d;
+    border-top: solid 1px #c06d00;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 15px 0 !important;
+}
+
+footer img{
+    width: 3%;
+}
+
+footer h3{
+    font-size: large;
+}
+
+.dosColumnas{
+	width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.columna{
+	width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.columna a {
+	width: 50%;
+}
+
+.col_img {
+	width: 100%;
+	border-radius: 7px;
+    box-shadow: black 0px 0px 10px;
+}
+
+.col_img:hover ~ .col_nombre {
+	color: #c06d00 !important;
+}
+
+.col_nombre {
+    margin: 8px 0 20px 0;
+    color: white;
+}
+
+#descripcion{
+	width: 25%;
+    text-align: center;
+    font-size: 20px;
+    border: solid 1px #c06d00;
+    border-radius: 7px;
+    padding: 16px;
+    margin: 21px 0;
+}
+
+.btn-rage {
+    background-color: #c06d00;
+}
+
+.btn-rage:hover {
+    background-color: #a75f00;
+}
+
+.resultado  {
+	width: 30%;
+    display: flex;
+    align-items: center;
+    border: solid 1px black;
+    background-color: rgb(45, 45, 45);
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.resultado img {
+	width: 35%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+}
+
+.resultado div {
+	width: 50%;
+	margin: 0 auto;
+}

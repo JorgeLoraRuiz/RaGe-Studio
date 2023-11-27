@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" th:href="@{/logo.png}" type="image/x-icon">
+	    <title>RaGe Studio</title>
+	    <link rel="stylesheet" th:href="@{style.css}">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	    <style>
+			h1 {
+				text-align: center;
+			}
+
+			a *:hover{
+				color: white !important;
+			}
+		</style>
+	</head>
+	<body>
+	    <nav id="cabecera">
+	        <a href="/">
+	            <img src="logo.png" alt="Logo de RaGe Studio" id="logo">
+	        </a>
+	        <div id="apartados">
+	            <div class="apartado">
+	                <a href="/">
+	                    <p>Inicio</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/artistas">
+	                    <p>Artistas</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/contacto.html" class="disabled">
+	                    <p>Contacto</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/nosotros.html" class="disabled">
+	                    <p>Nosotros</p>
+	                </a>
+	            </div>
+	            <form class="form-inline" th:action="@{/buscar}" method="get">
+				    <input class="form-control mr-sm-2" type="search" placeholder="Buscar aquí..." aria-label="Search" id="input" name="input" th:value="${input}">
+				    <button class="btn btn-rage my-2 my-sm-0" type="submit">🔍︎</button>
+				</form>
+	        </div>
+	    </nav>
+	    <div id="contenedor">
+			<div th:if="${canciones} != null">
+				<h1>Canciones</h1>
+				<div th:each="cancion: ${canciones}">
+					<a th:href="'/cancion/'+${#strings.toLowerCase(cancion.nombre)}" class="resultado">
+						<img th:src="${cancion.portada.url}">
+						<div>
+							<h3 th:text="${cancion.nombre}"></h3>
+							<h4 th:text="${cancion.artista.nombre}"></h4>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div th:if="${artistas} != null">
+				<h1>Artistas</h1>
+				<div th:each="artista: ${artistas}">
+					<a th:href="'/artista/'+${#strings.toLowerCase(artista.nombre)}" class="resultado">
+						<img th:src="${artista.imgArtista.urlImagen}">
+						<div>
+							<h3 th:text="${artista.nombre}"></h3>
+						</div>
+					</a>
+				</div>
+			</div>
+			<h2 th:text="${vacio}"></h2>
+        </div>
+        <footer>
+            <img src="../logo.png" alt="Logo de RaGe Studio">
+            <h3 style="margin: 0;">RaGe Studio</h3>
+        </footer>
+	</body>
+</html>

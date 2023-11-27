@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" th:href="@{/logo.png}" type="image/x-icon">
+	    <title>RaGe Studio</title>
+	    <link rel="stylesheet" th:href="@{style.css}">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	    <style>
+			form{
+				text-align: center;
+			}
+			.error {
+				color: rgb(217, 0, 0);
+			}
+			#artista, #artista option {
+				color: black;
+				text-align: center;
+				padding: 8px 12px;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+	    <nav id="cabecera">
+	        <a href="/">
+	            <img src="logo.png" alt="Logo de RaGe Studio" id="logo">
+	        </a>
+	        <div id="apartados">
+	            <div class="apartado">
+	                <a href="/">
+	                    <p>Inicio</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/artistas">
+	                    <p>Artistas</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/contacto.html" class="disabled">
+	                    <p>Contacto</p>
+	                </a>
+	            </div>
+	            <div class="apartado">
+	                <a href="/paginas/nosotros.html" class="disabled">
+	                    <p>Nosotros</p>
+	                </a>
+	            </div>
+	            <form class="form-inline" th:action="@{/buscar}" method="get">
+				    <input class="form-control mr-sm-2" type="search" placeholder="Buscar aquí..." aria-label="Search" id="nombre" name="nombre">
+				    <button class="btn btn-rage my-2 my-sm-0" type="submit">🔍︎</button>
+				</form>
+	        </div>
+	    </nav>
+	    <div id="contenedor">
+			<h1>Inserta los datos de la nueva canción</h1>
+	        <form th:action="@{/saveCancion}" method="post">
+				<div class="form-group">
+				    <label for="nombre">Nombre de la cancion</label>
+					<input type="text" class="form-control" id="nombre" name="nombre" required>
+				</div>
+				<div class="form-group">
+				    <label for="nombre">Artista de la cancion</label>
+				    <br>
+					<select id="artista" name="artista">
+						<option selected value="">Selecciona un artista</option>
+						<option th:each="artista: ${artistas}" th:value="${artista.id}" th:text="${artista.nombre}"></option>
+					</select>
+				</div>
+				<div class="form-group">
+				    <label for="fecha">Fecha de salida</label>
+					<input type="date" class="form-control" id="fecha" name="fecha" required>
+				</div>
+				<button type="submit" class="btn btn-rage">Siguente</button>
+			</form>
+			<h4 th:text="${notNull}" class="error"></h4>
+	        <footer>
+	            <img src="../logo.png" alt="Logo de RaGe Studio">
+	            <h3 style="margin: 0;">RaGe Studio</h3>
+	        </footer>
+	</body>
+</html>
